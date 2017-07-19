@@ -2,6 +2,7 @@
 layout: page
 title: Transavia Dreams
 thing:  Transavia Dreams
+categories: portfolio
 subtitle: I won a prize at a hackathon with
 date: 2015-06-16
 info:
