@@ -1,0 +1,630 @@
+:root {
+	--red: #ec1940;
+	--green: #beff09;
+	--radius: 6px;
+	--dark: #093059;
+	--white: white;
+	--darkgreen: #144900;
+}
+.red{
+	background: var(--red);
+	fill:var(--red);
+}
+.green{
+	background: var(--green);
+	fill:var(--darkgreen);
+}
+.white {
+	background: white;
+	fill: white;
+}
+.whiteline {
+	fill: var(--darkgreen);
+	stroke: white;
+	stroke-width:4;
+	stroke-miterlimit:10;
+}
+*{
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-family: "CamingoCode-Regular";
+}
+a {
+	color: inherit;
+	border-bottom: 1px dotted;
+	text-decoration: none;
+}
+p {
+	font-size: 12.5pt;
+}
+h1, h2, h3, h4 {
+	text-transform: uppercase;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+h1 {
+	font-size: 80pt;
+}
+h2 {
+	letter-spacing: 6pt;
+	font-size: 40pt;
+	margin-bottom: 20px;
+}
+h3 {
+	font-size: 20pt;
+}
+
+.container {
+	top: 154px;
+	z-index: 1;
+	height: 640px;
+	max-width: 940px;
+	width: calc(100% - 40px);
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+	perspective: 10000px;
+}
+
+/*
+Main contents
+ */
+.main {
+	position: absolute;
+	left: 20px;
+	width: calc(100% - 40px);
+	overflow-x: scroll;
+	height: 100%;
+	border-radius: var(--radius);
+	background-color: var(--red);
+	color: var(--green);
+}
+.column {
+	display: inline-block;
+	position: relative;
+	width: calc(50% - 2*58px);
+	margin: 58px;
+	float: left;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	margin: 58px;
+}
+ul.contact li {
+	position: relative;
+	list-style: none;
+	display: inline;
+}
+ul.contact li::after {
+	content: " —";
+}
+ul.contact li:last-child::after {
+	content: "";
+}
+
+.main.animate {
+	animation-name: hello;
+	animation-iteration-count: 1;
+	animation-duration: 0.8s;
+	animation-timing-function: ease-in-out;
+}
+.main.animate footer {
+	animation-name: hello-footer;
+	animation-iteration-count: 1;
+	animation-duration: 0.8s;
+	animation-timing-function: ease-in-out;
+}
+.main header {
+	font-size: 70pt;
+	text-align: center;
+	overflow-x: hidden;
+	word-break: keep-all;
+	font-family: 'CamingoCode-Bold';
+	margin-top: 30pt;
+	letter-spacing: 16pt;
+	text-transform: uppercase;
+}
+.main header a {
+	text-decoration: none;
+	border-bottom: none;
+}
+body.secret {
+	animation: darksecret 1.6s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+}
+.stars {
+	position: fixed;
+	opacity: 0;
+	left: 0;
+	bottom: 100px;
+}
+.stars p{
+	position: fixed;
+}
+.stars :nth-child(1){ left: 100px; bottom: 100px; }
+.stars :nth-child(2){ left: 32px; bottom: 60px; }
+.stars :nth-child(3){ left: 162px; bottom: 97px; }
+.stars :nth-child(4){ left: 230px; bottom: 115px; }
+.stars :nth-child(5){ left: 340px; bottom: 180px; }
+.stars :nth-child(6){ left: 265px;bottom: 62px;}
+.stars :nth-child(7){ left: 360px; bottom: 100px; }
+.stars :nth-child(8){ font-size: 50pt; top: 0px; right: 40px;}
+body.secret .stars {
+	animation: secretstars 1.6s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+}
+body.secret .main {
+	animation: flipout 1.6s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+}
+body.secret .main.secret {
+	animation: flipin 1.6s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+}
+
+.main.secret {
+
+	background-color: var(--dark);
+	color: var(--white);
+	transform: rotate3d(0,1,0,90deg) rotateZ(180deg);
+}
+
+.subtitle {
+	font-size: 25pt;
+}
+
+
+/*
+Media queries
+ */
+
+
+ @media only screen and (max-width: 927px) {
+    article .contents, article .information {
+		width: calc(100% - 80px);
+		max-width: calc(100% - 80px) !important;
+		margin: 20px;
+	}
+	article .information {
+		margin-left: 40px !important;
+	}
+ }
+ @media only screen and (max-width: 880px) {
+	 .main header, h1{
+		 font-size: 45pt;
+	  }
+	  h2 {
+	  	letter-spacing: 6pt;
+	  	font-size: 30pt;
+	  	margin-bottom: 20px;
+	  }
+	  h3, .subtitle {
+	  	font-size: 15pt;
+	  }
+	  .page.active{
+	  	top: 150px !important;
+  	  }
+	  .container {
+		  top: 130px !important;
+
+	  }
+ }
+ @media only screen and (max-width: 685px) {
+	.main header, h1{
+		font-size: 30pt;
+	 }
+
+	 .main {
+		 height: calc(100% + 60px) !important;
+	 }
+	 h2 {
+	   letter-spacing: 6pt;
+	   font-size: 20pt;
+	   margin-bottom: 20px;
+	 }
+	 h3, .subtitle {
+	   font-size: 15pt;
+	 }
+	 .page.active{
+	   top: 150px !important;
+	 }
+	 .container {
+		 top: 130px !important;
+		 width: calc(100% - 20px)!important;
+	}
+	.imade {
+		font-size: 14pt !important;
+	}
+ }
+ @media only screen and (max-width: 580px) {
+	 .main .column {
+		 width: calc(100% - 60px);
+		 margin: 40px;
+	 }
+	.container {
+		top: 90px !important;
+	}
+	footer {
+		margin: 40px;
+	}
+	ul.contact li {
+		display: block !important;
+	}
+	ul.contact li::after {
+		content: "";
+	}
+}
+ @media only screen and (max-width: 400px) {
+	 .container {
+		 top: 30px !important;
+	 }
+	 .main .column {
+		 margin: 30px;
+	 }
+	 footer {
+ 		margin: 30px;
+ 	}
+}
+a.close {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	border-bottom: none !important;
+	display: block;
+	margin: 10px;
+}
+/*
+ Page
+ */
+.page.active {
+	top: 180px;
+}
+.page.hidden{
+	display: none;
+}
+.page {
+	position: absolute;
+	background-color: var(--green);
+	color: var(--darkgreen);
+	padding: 14px;
+	padding-top: 40px;
+	top: 100vh;
+	width: calc(100% - 28px);
+	padding-bottom: 40px;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.4);
+	border-radius: var(--radius);
+	min-height: 700px;
+	transition: top 0.2s;
+}
+.page h2{
+	margin-left: 40px;
+}
+.imade {
+	margin-top:-10pt;
+	font-size: 25pt;
+	margin-bottom: -10pt;
+	margin-left: 40px;
+}
+.page .contents {
+	max-width: 50%;
+	float: left;
+	margin-left: 40px;
+	margin-right: 10px;
+}
+
+.page .information{
+	float: left;
+	position: relative;
+	min-width: 380px;
+	max-width: 40%
+}
+
+.page .information .slider {
+	width: 100%;
+	height: 230px;
+}
+
+.page dl {
+	margin-top: 15px;
+	display: table;
+}
+.page di {
+	display: table-row;
+}
+.page dt, .page dd {
+	display: table-cell;
+	padding-right: 4px;
+}
+.page dt {
+	font-family: 'CamingoCode-Bold';
+}
+
+/*
+Slider
+ */
+.slider {
+	position: relative;
+	width: 600px;
+	height:400px;
+	position: relative;
+	overflow: hidden;
+}
+.slider a.btn {
+	bottom: 0;
+	text-decoration: none;
+	border-bottom: none;
+	z-index: 2;
+	position: absolute;
+	width: 50%;
+	height: 80%;
+	opacity: 0;
+	transition-property: left right;
+	transition-duration: 0.1s;
+	vertical-align: top;
+}
+.slider a.big {
+	top: 30px;
+	right: 0;
+	width: 50px !important;
+	height: 30px !important;
+}
+.slider a.big svg {
+	right: 0;
+
+	width: 50px !important;
+	height: 30px !important;
+}
+.slider a.btn svg {
+	height: 50px;
+	position: absolute;
+	top: 30%;
+	margin-top: -25px;
+}
+.slider a.btn:hover {
+	opacity: 1;
+}
+
+.slider a.btn.prev{
+	left: -50px;
+}
+.slider a.btn.prev:hover{
+	left: 0;
+}
+.slider a.btn.next{
+	right: -50px;
+}
+.slider a.btn.next:hover{
+	right: 0;
+}
+.slider a.btn.next svg {
+	right: 0;
+}
+
+
+.slider.big {
+	position: fixed;
+	z-index: 5;
+}
+
+ul.pictures {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+ul.pictures li {
+	position: absolute;
+	list-style: none;
+	width: 50%;
+	height: 100%;
+	left: 50%;
+}
+
+ul.pictures img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+ul.pictures li.arriving {
+	animation: pictureIn 0.6s; /* IE 10+, Fx 29+ */
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+}
+ul.pictures li.hidden{
+	opacity: 0;
+}
+ul.pictures li.leaving {
+	animation: pictureOut 0.6s;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+}
+ul.pictures li.previous {
+	animation-direction: reverse;
+}
+
+ul.pictures .active {
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.bigslider.arriving {
+	background-color: rgba(0, 0, 0, 0.9);
+	z-index: 4;
+	position: fixed;
+	width: 100%;
+	height: 0;
+	top: 0;
+	left: 0;
+	animation: bigsliderAppearing 1s;
+	animation-fill-mode: both;
+	animation-iteration-count: 1;
+}
+@keyframes bigsliderAppearing {
+	0% {
+		height: 0;
+	}
+	50%, 100%{
+		height: 100%;
+	}
+}
+
+#background {
+	z-index: 0;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+
+
+
+/*
+Animations
+ */
+
+
+
+@keyframes hello {
+	0% {
+		height: 180px;
+		top: calc(100% - 400px);
+		width: 20px;
+		left: calc(50% - 10px);
+	}
+	45% {
+		height: 180px;
+		top: calc(100% - 400px);
+		width: calc(100% - 40px);
+		left: 20px;
+	}
+	55%{
+		height: 180px;
+		top: calc(100% - 400px);
+		width: calc(100% - 40px);
+		left: 20px;
+	}
+	100% {
+		width: calc(100% - 40px);
+		left: 20px;
+		top: 0;
+		height: 100%;
+	}
+}
+
+@keyframes hello-footer {
+0%{
+   opacity: 0;
+}
+70%{
+   opacity: 0;
+}
+80% {
+   opacity: 1;
+}
+}
+
+
+@keyframes flipin {
+	0%{
+		transform: rotate3d(1,0,0,90deg) rotateZ(180deg);
+	}
+	20%{
+		transform: rotate3d(1,0,0,90deg) rotateZ(180deg);
+	}
+	40%, 60%{
+		transform: rotate3d(1,0,0,0deg) rotateZ(180deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
+}
+
+@keyframes flipout {
+	0%{
+		transform: rotate3d(1,0,0,0deg);
+	}
+	15%{
+		transform: rotate3d(1,0,0,-90deg);
+	}
+	100%{
+		transform: rotate3d(1,0,0,-90deg);
+	}
+}
+
+@keyframes darksecret {
+	0%, 60%{
+		background-color: white;
+	}
+	100%{
+		background-color: #04182d;
+	}
+}
+@keyframes secretstars {
+	0%, 60%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+
+@keyframes pictureIn {
+	0% {
+		left: 52%;
+		width: 48%;
+		z-index: 0;
+		height: 94%;
+		top: 3%;
+	}
+	50%{
+		left: 0;
+		width: 48%;
+		z-index: 0;
+		height: 100%;
+		top: 0;
+	}
+	51%{
+		z-index: 1;
+	}
+	100% {
+		left: 0;
+		width: 100%;
+		z-index: 1;
+	}
+}
+
+
+@keyframes pictureOut {
+	0% {
+		left: 0;
+		width: 100%;
+		z-index: 1;
+		height: 100%;
+		top: 0;
+
+	}
+	50%{
+		left: 52%;
+		width: 48%;
+		z-index: 1;
+		height: 94%;
+		top: 3%;
+	}
+	51%{
+		z-index: 0;
+	}
+	100% {
+		height: 94%;
+		top: 3%;
+		left: 25%;
+	}
+}

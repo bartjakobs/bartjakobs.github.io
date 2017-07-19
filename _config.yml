@@ -1,0 +1,18 @@
+title: Bart Jakobs
+email: bartjakobs@gmail.com
+description: This is my Portfolio site.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# Social
+twitter_username: bartjakobs
+github_username:  bartjakobs
+facebook_username:  bartjakobs
+# Build settings
+markdown: kramdown
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+permalink: none

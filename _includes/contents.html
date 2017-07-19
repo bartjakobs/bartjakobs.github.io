@@ -1,0 +1,39 @@
+<p class="imade">
+	{{page.subtitle}}
+</p>
+<a href="/" class="close">❌</a>
+
+<h2>{{page.thing}}</h2>
+
+<div class="contents">
+{{ content }}
+</div>
+
+<div class="information">
+	{% if page.pictures%}
+	<div class="slider">
+		<a href="javascript:;" class="btn prev">
+			<svg version="1.0" viewbox="0,0,63,100"><use xlink:href="#arrow-left"/></svg>
+		</a>
+		<a href="javascript:;" class="btn next">
+			<svg version="1.0" viewbox="0,0,63,100"><use xlink:href="#arrow-right"/></svg>
+		</a>
+		<a href="javascript:;" class="btn big">
+			<svg version="1.0" class="whiteline" viewBox="0 0 70.4 53.7" ><use xlink:href="#full"/></svg>
+		</a>
+		<ul class="pictures">
+			{% for picture in page.pictures %}
+			<li><img src="{{picture}}"></li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	{% endif %}
+	{% if page.info %}
+		<dl>
+			{% for info in page.info %}
+			<di><dt>{{info[0]}}</dt><dd>{{info[1]}}</dd></di>
+			{% endfor %}
+		</dl>
+	{% endif %}
+</div>

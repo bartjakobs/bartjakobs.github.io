@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{{page.title}} - Bart Jakobs</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/assets/css/font.css">
+		<link rel="stylesheet" href="/assets/css/main.css">
+		<script src="https://cdn.rawgit.com/web-animations/web-animations-js/master/web-animations.min.js"></script>
+		<script src="https://cdn.rawgit.com/snaptortoise/konami-js/master/konami.js"></script>
+		<script src="/assets/js/pages.js"></script>
+		<script src="/assets/js/slider.js"></script>
+		{% include svgs.html %}
+	</head>
+	<body>
+		<div class="container">
+			<div class="main red">
+				<header>
+					<a href="/">
+						Bart Jakobs
+						<!--<svg version="1.0" viewBox="0 0 788.8 126.7"><use xlink:href="#header"/></svg>-->
+					</a>
+				</header>
+				<div class="content">
+					<div class="column">
+						<p class="welcome">
+							{{ posts }}
+							<h3>Hi, I’m Bart </h3>
+							<p>I'm a theater student and thing maker.</p>
+							<p>This portfolio is a work in progress.</p>
+
+
+						</p>
+					</div>
+					<div class="column">
+						<p class="welcome">
+							<p class="subtitle">Things I did</p><br>
+							{% include postlist.html %}
+						</p>
+					</div>
+				</div>
+				<footer>
+					{% include links.html %}
+				</footer>
+			</div>
+			<div class="main secret hidden">
+				<h2>Hier iets geheims</h2>
+			</div>
+			{% if include.nopage != true %}
+				<article class="page green active">
+					{% include contents.html %}
+				</article>
+
+			{% else  %}
+				<article class="page green hidden">
+				</article>
+			{% endif %}
+		</div>
+		<div class="stars">
+		   <p>⭐</p><p>⭐</p><p>⭐</p><p>⭐</p><p>⭐</p><p>⭐</p><p>⭐</p><p>🌜</moon>
+	   </div>
+
+	   <div class="bigslider">
+	   </div>
+	</body>
+</html>
