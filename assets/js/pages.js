@@ -17,7 +17,7 @@
 		var host = window.location.host;
 		for (var i = 0; i < elements.length; i++) {
 			var link = elements[i]
-			if(link.href.indexOf(host) != -1){
+			if(link.href.indexOf(host) != -1 && !link.classList.contains('nolink')){
 				link.addEventListener('click', Page.linkClicked.bind(link.href));
 			}
 		}
@@ -27,13 +27,12 @@
 		var href = this
 		ev.preventDefault();
 		history.pushState({}, "", href);
-		yolo.get(href, Page.loadContents);
+		ajax.get(href, Page.loadContents);
 		return false;
 	};
 
 
 	Page.loadContents = function(contents){
-		Page._doEvent('load');
 		var page = window.location.href;
 		page = page.substr(page.lastIndexOf('/') + 1);
 		if(page.trim() == '' || page == 'index.html'){
@@ -68,9 +67,10 @@
 			cache[page] = {title: title, contents: contents};
 			loadSliders();
 		}
+		Page._doEvent('load');
 	}
 
-	 Page.onPopState = function(ev){
+	Page.onPopState = function(ev){
 		ev.preventDefault();
 		Page.loadContents();
 		return false;
@@ -89,57 +89,7 @@
 	window.addEventListener('load', Page.init);
 	window.onpopstate = Page.onPopState;
 	window.Page = Page;
-})()
+})();
 
-var yolo = {};
-
-/**
- * Perform an AJAX GET request and call back
- * @param  {String}   url      the url to request
- * @param  {Function} callback method to call when the response is received.
- * @return {void}
- */
-yolo.get = function(url, options){
-	return yolo.ajax(url, 'GET', options);
-};
-/**
- * Perform an AJAX request
- * @param  {String} url     url to request
- * @param  {String} method  (uppercase) HTTP method
- * @param  {Object} options Object containing progress, error and abort listeners. Also headers, in options.headers.
- * @param  {Object} data    Data (FormData or String), when POSTing
- */
-yolo.ajax = function(url, method, options, data){
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4) {
-			if(typeof(options) == 'function'){
-				options(xhr.responseText);
-				// console.groupCollapsed("result for "+method+" "+url);
-				// console.log(data);
-				// console.log(xhr.responseText);
-				// console.groupEnd();
-			}
-			if(typeof(options['done']) == 'function'){
-				options['done'](xhr.responseText);
-			}
-		}
-	};
-	// set all listeners
-	['progress', 'error', 'abort'].forEach(function(ev){
-		if(typeof(options[ev]) == 'function')
-			xhr.addEventListener(ev, options[ev], false);
-	});
-	//sending headers
-	if('headers' in options){
-		for (var key in options.headers){
-			xhr.setRequestHeader(key, options.headers[key]);
-		};
-	}
-	if(typeof options.data !== 'undefined')
-		data = options.data;
-	xhr.open(method, url, true);
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	xhr.send((typeof data !== 'undefined')?data:null);
-};
+var ajax={get:function(c,d){return ajax._request(c,"GET",d)},_request:function(c,d,a,e){var b=new XMLHttpRequest;b.onreadystatechange=function(){4==b.readyState&&("function"==typeof a&&a(b.responseText),"function"==typeof a.done&&a.done(b.responseText))};["progress","error","abort"].forEach(function(c){"function"==typeof a[c]&&b.addEventListener(c,a[c],!1)});if("headers"in a)for(var f in a.headers)b.setRequestHeader(f,a.headers[f]);"undefined"!==typeof a.data&&(e=a.data);b.open(d,c,!0);b.setRequestHeader("Content-type",
+"application/x-www-form-urlencoded");b.send("undefined"!==typeof e?e:null)}};

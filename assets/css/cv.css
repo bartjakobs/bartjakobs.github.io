@@ -1,0 +1,75 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	position: relative;
+	font-family: "CamingoCode-Regular";
+	color: var(--red);
+}
+a.back {
+	top: -100px;
+	display: block;
+	position: relative;
+	text-decoration: none;
+	background: var(--red);
+	color: var(--green);
+	padding: 10px;
+	border-radius: 3px;
+	float: right;
+}
+.picture {
+float: right;
+position: relative;
+}
+.container{
+	position: relative;
+	margin: 0 auto;
+	width: calc(100% - 16px);
+	height: 100vh;
+	background-color: white;
+	max-width: 816px;
+	box-shadow: 0px 0px 10px 1px var(--red);
+	padding-top: 10px;
+}
+.contents{
+	color: black;
+	margin: 22px;
+
+}
+a {
+	color: inherit;
+	border-bottom: 1px dotted;
+	text-decoration: none;
+}
+.contents h1 {
+	margin-bottom: 60px;
+}
+.contents h3{
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+.contents ul {
+	list-style: none;
+	line-height: 100%;
+}
+.column hr {
+	border-style: solid;
+	width: 80%;
+	max-width: 900px;
+	position: relative;
+	margin: 0 auto;
+}
+.column.wide {
+	width: 100%;
+}
+.column{
+	margin-top: 10px;
+	float: left;
+	min-width: 50%;
+}
+
+ul.work {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
