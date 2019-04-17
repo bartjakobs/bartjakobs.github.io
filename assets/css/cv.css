@@ -19,8 +19,11 @@ a.back {
 	float: right;
 }
 .picture {
-float: right;
+float: left;
 position: relative;
+}
+.picture img {
+	
 }
 .container{
 	position: relative;

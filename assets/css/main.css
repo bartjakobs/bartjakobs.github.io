@@ -22,6 +22,7 @@
 }
 body {
 	font-family: "CamingoCode-Regular";
+	
 }
 a {
 	color: inherit;
@@ -30,6 +31,7 @@ a {
 }
 p {
 	font-size: 12.5pt;
+	margin-bottom: 12pt;
 }
 h1, h2, h3, h4 {
 	text-transform: uppercase;
@@ -67,7 +69,7 @@ Main contents
 	position: absolute;
 	left: 20px;
 	width: calc(100% - 40px);
-	overflow-x: scroll;
+	overflow-x: hidden;
 	height: 100%;
 	border-radius: var(--radius);
 	background-color: var(--red);
